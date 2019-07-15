@@ -19,9 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']))
 	//Send into email Pin code if no errors [ mail(to, subject, message, headers, parameters)]
     $headers = 'from: ' . $email . '\r\n';
 	
-
 	if(empty($formError)){
-
 
 		mail('moradsafwat666@gmail.com', 'LOGIN FORM TEST', 'welcome in my test login', $headers);
 	};
@@ -72,7 +70,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']))
 					</div>		
 
 					<div class="validate-input m-b-23">
-						<input class="input-form" type="text" name="username" placeholder="Type your username" value="<?php if(isset($user)){echo $user ;} ?>" required>
+						<input class="input-form" type="text" name="username" placeholder="Type your username" value="<?php if(isset($user)){echo $user ;} ?>" autocomplete="off" required >
 					</div>
 
 					<div class="validate-input m-b-23">
