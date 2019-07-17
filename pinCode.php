@@ -1,3 +1,35 @@
+<?php
+	if(isset($_GET['code']))
+	{
+		//check if url upload This values 
+		$k1 = $_GET['key1'];
+		$k2 = $_GET['key2'];
+		$k3 = $_GET['key3'];
+		$k4 = $_GET['key4'];
+
+		if(isset($_POST['submit']))
+		{
+			$pin1 = sha1($_POST['pin1']);
+			$pin2 = sha1($_POST['pin2']);
+			$pin3 = sha1($_POST['pin3']);
+			$pin4 = sha1($_POST['pin4']);
+
+			$formError = array();
+			$message = array();
+
+			if($k1 == $pin1 && $k2 == $pin2 && $k3 == $pin3 && $k4 == $pin4)
+			{?> 
+				<script>
+		  			window.location = 'msgSucsses.php';
+     			</script>
+			<?php
+			}else{
+				$formError[] = "Oops Your PIN Code Is Not Valied ! <br> Please Try Again ";
+			}		
+		};   	
+
+	};
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,18 +69,21 @@
 								<?php echo $error . '<br>'; ?>
 						</div>
 					<?php } }; ?>
+	
 					<div class="text-center p-t-8 p-b-5">
 						<p class="label-center2">Set a 4-digit PIN to keep your details safe :</p>
 					</div>		
 
 					<div class="validate-input m-b-23">
-						<input class="input-pin" type="text" name="pin1" placeholder="*">
+						<input class="input-pin" type="text" name="pin1" placeholder="*" autocomplete="off" required>
 
-						<input class="input-pin" type="text" name="pin2" placeholder="*">
+						<input class="input-pin" type="text" name="pin2" placeholder="*" autocomplete="off"
+						required>
 
-						<input class="input-pin" type="text" name="pin3" placeholder="*">
+						<input class="input-pin" type="text" name="pin3" placeholder="*" autocomplete="off"
+						required>
 
-						<input class="input-pin" type="text" name="pin4" placeholder="*">
+						<input class="input-pin" type="text" name="pin4" placeholder="*" autocomplete="off"required>
 
 					</div>					
 
@@ -62,9 +97,10 @@
 					</div>
 
 				</form>
-
 				<!-- End Form -->
-
+				<div class="text-center p-t-8 p-b-31"> 
+					<p class="buttom1">Privacy policy</p>
+				</div>
 			</div>
 		</div>
 	</div>
