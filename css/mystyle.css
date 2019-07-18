@@ -68,38 +68,57 @@ a:hover {
 h1,h2,h3,h4,h5,h6 {
 	margin: 0px;
 }
+.div-buttom{
+  width: 100%;
+  height: 30px;
+}
 
 .buttom-icon{
   display: inline-block;
-  width: 28%;
-  background-color: aqua;
+  width: 31%;
   height: 75px;
 }
 
-.icons{
+.title{
+    text-align: center;
     position: relative;
-    top: 10px;
-    left: 45px;
-    font-size: 25px;
+    top: 30%;
+    font-size: 14px;
+}
+
+.icons{
+    color: #fff;
+    position: relative;
+    top: 12px;
+    left: 40%;
+    font-size: 20px;
+}
+
+.buttom{
+  font-size: 16px;
 }
 
 .buttom1{
+  font-size: 15px;
   text-decoration: underline;
   line-height: 45px;
 }
 
 .line{
-  display: inline;
-  float: right;
-  background-color: #000;
-  width: 2px;
-  height: 100%;
+    display: inline;
+    float: right;
+    background-color: #faf5f5;
+    position: relative;
+    top: -46px;
+    left: 2px;
+    width: 2px;
+    height: 55%;
 }
 
 p {
 	font-family: Poppins-Regular;
-	font-size: 14px;
-	line-height: 1.7;
+  font-size: 11px;	
+  line-height: 1.7;
 	color: #fff;
 	margin: 0px;
 }
@@ -258,10 +277,10 @@ iframe {
 }
 
 .input-pin{
-    width: 24%;
-    height: 100px;
-    padding: 30px;
-    font-size: 70px;
+    width: 23%;
+    height: 60px;
+    padding: 25px;
+    font-size: 37px;
     text-align: center;
     display: inline-block;
 }
@@ -296,7 +315,7 @@ iframe {
 .input-submit{
     width: 100%;
     height: 45px;
-    background-color: #5f8bdcbf;
+    background-color: #5f8bdc;
     color: #fff;
 }
 }
@@ -451,6 +470,7 @@ i {
 
 .validate-input {
   position: relative;
+  top: 10px;
 }
 
 .alert-validate::before {
@@ -540,6 +560,38 @@ i {
 
 /*//////////////////////////////////////////////////////////////////
 [ Responsive ]*/
+@media(max-width: 639px){
+  .input-pin{
+    padding: 10px;
+    font-size: 40px;
+  }
+  .login100-form-title{
+    font-size: 30px;
+  }
+
+  .buttom1{
+        font-size: 10px;
+  }
+
+  .buttom{
+        font-size: 11px;
+  }
+
+  .title{
+    font-size: 8px;4
+  }
+
+  .line{
+    position: relative;
+    top: -35px;
+    height: 50%;
+  }
+/* Pin Code page */
+  .label-center2 {
+    font-size: 10px;
+  }
+
+}
 
 @media (max-width: 576px) {
   .wrap-login100 {

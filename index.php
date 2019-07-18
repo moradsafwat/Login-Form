@@ -1,16 +1,6 @@
 <?php
-	$pinCode = array(1, 2, 3, 4, 5, 6, 7, 8, 9);
-	$pinRand = array_rand($pinCode, 4);
-	$key1 = $pinCode[$pinRand[0]];
-	$key2 = $pinCode[$pinRand[1]];
-	$key3 = $pinCode[$pinRand[2]];
-	$key4 = $pinCode[$pinRand[3]];
-
-	$codee =  $key1 . $key2 . $key3 . $key4 . '<br>';
-	echo $codee;
-	echo sha1($key1 . $key2 . $key3 . $key4);
-	
-// Check if user coming from a request method
+	//$pinCode = rand(1000,9999);
+	session_start();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']))
 {
@@ -18,12 +8,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']))
 	$user  = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
 	$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 
-	//array random for pin code 
-	
-
-
-
-
+	// Random pin Code
+	$pinCode = rand(1000,9999);
+	// session_start();
+	$_SESSION['pinCode'] = $pinCode;
+	$_SESSION['username'] = $user;
+	$_SESSION['email'] = $email;
 
 	// This is array for errors
 	$formError = array();
@@ -36,14 +26,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']))
    
     $headers  = "MIME-Version: 1.0\r\n";
     $headers .= "Content-type: text/plain; charset=utf-8\r\n";
+   	//$mail     = 'eng.meladhanna1010@gmail.com';
 	
 	if(empty($formError)){
-		/*if(!mail('moradsafwat666@gmail.com', 'LOGIN FORM TEST', 'welcome in my test login', $headers)){
+		if(!mail($_SESSION['email'], 'LOGIN FORM TEST', ' Your PIN Code Is : '. $pinCode, $headers)){
 			$formError[] = "Error in email, type in a correct email and try again!";
-		}*/?>
-		<script>
-		  window.location = 'pinCode.php?code=<?= $codee;?>&key1=<?= sha1($key1);?>&key2=<?= sha1($key2);?>&key3=<?= sha1($key3);?>&key4=<?= sha1($key4);?>';
-     	</script> <?php
+		}else{?>
+			<script>
+				window.location = 'pinCode.php';
+			</script> <?php
+		}
 	};
 }
 ?>
@@ -116,19 +108,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']))
 					<p class="buttom1">Register now</p>
 				</div>
 
-				<div>
+				<div class="div-buttom">
 					<div class="buttom-icon">
 						<i class="fa fa-users icons"></i>
+						<p class="title">O2 Community</p>
 						<div class="line"></div>
 					</div>
 
 					<div class="buttom-icon">
 						<i class="fa fa-comment-o icons" aria-hidden="true"></i>
+						<p class="title">O2 Gurus</p>
 						<div class="line"></div>
 					</div>
 
 					<div class="buttom-icon">
-						<i class="fa fa-comment-o icons" aria-hidden="true"></i>
+						<i class="icons">O<sub>2</sub></i>
+						<p class="title">More from O2</p>
+
 					</div>
 				</div>
 
@@ -139,20 +135,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']))
 
 	<div id="dropDownSelect1"></div>
 	
-<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
 
